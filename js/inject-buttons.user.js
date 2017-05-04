@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Next-Previous Episode Link on Element Opie
 // @namespace   unknown
-// @include     http://elementopie.com/?q=*/*
+// @include     http://elementopie.com/*/*
 // @version     0.5
 // @grant       none
 // ==/UserScript==
@@ -9,8 +9,9 @@
 //Pick up needed bits from website
 var url = document.URL;
 
-var strip_url = url.replace(/[\/=?.:0-9]/g, "");
-var podcast = strip_url.replace("httpelementopiecomq", "")
+var strip_url = url.replace(/[^a-z]/g, "");
+var strip_url = strip_url.replace("q", "");
+var podcast = strip_url.replace("httpelementopiecom", "")
 console.log("Detected podcast " + podcast);
 
 var episode = url.replace(/[^0-9]/g, "");
