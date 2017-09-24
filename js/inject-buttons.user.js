@@ -3,6 +3,7 @@
 // @namespace   unknown
 // @include     http://elementopie.com/*/*
 // @version     1.2
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -31,11 +32,11 @@ var next_episode = episode_number + 1;
 console.log("The previous episode: " + previous_episode + "\nThe next episode: " + next_episode);
 
 /* Around Tightwad Tech episode 11, Mark made some changes to the site, so the tag I was using to inject the links into *\
-|* doesn't exist. So, I made a hack. It kind of throws everything off, as the links are now being placed right above the  *|
+|* doesn't exist. So, I made a hack. It kind of throws everything off, as the links are now being placed right above the*|
 \* synopsis paragraph instead of below the Tips of the Week like down below, but I didn't really have a choice.         */
-//
+
 /* As far as the actual code here, it looks to see if it captured the Tightwad Tech podcast, and then if on or before   *\
-|* episode 11. if it does, it looks for the class name "field-item even". It copies the contents of that first synopsis *|
+|* episode 11. If it is, it looks for the class name "field-item even". It copies the contents of that first synopsis   *|
 \* paragraph and then injects the links and the contents. Nothing is missing from the original page. 				    */
 if (podcast == "tightwadtech" && episode_number <= 11){
   var paragraph = document.getElementsByClassName('field-item even');
