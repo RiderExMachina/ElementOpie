@@ -2,7 +2,7 @@
 // @name        Element Opie next-previous
 // @namespace   unknown
 // @include     http://elementopie.com/*/*
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 
@@ -31,7 +31,7 @@ var next_episode = episode_number + 1;
 console.log("The previous episode: " + previous_episode + "\nThe next episode: " + next_episode);
 
 /* Around Tightwad Tech episode 11, Mark made some changes to the site, so the tag I was using to inject the links into *\
-|* don't exist. So, I made a hack. It kind of throws everything off, as the links are now being placed right above the  *|
+|* doesn't exist. So, I made a hack. It kind of throws everything off, as the links are now being placed right above the  *|
 \* synopsis paragraph instead of below the Tips of the Week like down below, but I didn't really have a choice.         */
 //
 /* As far as the actual code here, it looks to see if it captured the Tightwad Tech podcast, and then if on or before   *\
@@ -42,7 +42,7 @@ if (podcast == "tightwadtech" && episode_number <= 11){
   var download_link = paragraph[0];
   console.log("Injecting links above the synopsis.");
   var existing = download_link.innerHTML;
-  download_link.innerHTML = '<br /><p style="text-align:center;"><a href="/?q=' + podcast + '/' + previous_episode +'">‹ Previous Episode </a> || <a href="/?q=tightwadtech/' + next_episode +'">Next Episode ›</a></p>' +  existing;
+  download_link.innerHTML = '<br /><p style="text-align:center;"><a href="/?q=' + podcast + '/' + previous_episode +'">‹ Previous Episode </a> || <a href="/?q=' + podcast + '/' + next_episode +'">Next Episode ›</a></p>' +  existing;
   console.log("Link injection successful.");
 }
 
@@ -54,5 +54,5 @@ var n = parseInt(paragraph.length);
 var download_link = paragraph[n - 1];
 console.log("Injecting links into paragraph block " + parseInt(paragraph.length));
 var existing = download_link.innerHTML;
-download_link.innerHTML = existing + '<br /><p style="text-align:center;"><a href="/?q=' + podcast + '/' + previous_episode +'">‹ Previous Episode </a> || <a href="/?q=tightwadtech/' + next_episode +'">Next Episode ›</a></p>';
+download_link.innerHTML = existing + '<br /><p style="text-align:center;"><a href="/?q=' + podcast + '/' + previous_episode +'">‹ Previous Episode </a> || <a href="/?q=' + podcast + '/' + next_episode +'">Next Episode ›</a></p>';
 console.log("Link injection successful.");
